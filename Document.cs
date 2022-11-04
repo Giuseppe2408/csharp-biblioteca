@@ -7,7 +7,7 @@
 //CLASSE DI TUTTI I DOCUMENTI CON I DATI IN COMUNE FRA DVD E BOOK
 public class Document
 {
-    protected string Titolo { get; set; }
+    public string Title { get; set; }
 
     protected int Year { get; set; }
     protected string Section { get; set; }
@@ -24,12 +24,17 @@ public class Document
         
     }
 
-    public Document(string titolo, int year, string section, string nameaut, string surnameaut) {
+    public Document(string title, int year, string section, string nameaut, string surnameaut) {
         
-        Titolo = titolo;
+        Title = title;
         Year = year;
         Section = section;
         NameAuthor = nameaut;
         SurnameAuthor = surnameaut;
+    }
+
+    public override string ToString()
+    {
+        return Title;
     }
 }

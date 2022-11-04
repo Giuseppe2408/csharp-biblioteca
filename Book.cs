@@ -14,7 +14,7 @@ public class Book : Document
     public string IsbnCode { get; set; }
     public int NumberPage { get; set; }
 
-    public Book(string titolo, int year, string section, string nameaut, string surnameaut, string isbnCode, int numberPage) : base(titolo, year, section, nameaut, surnameaut)   
+    public Book(string title, int year, string section, string nameaut, string surnameaut, string isbnCode, int numberPage) : base(title, year, section, nameaut, surnameaut)   
     {
         IsbnCode = isbnCode;
         NumberPage = numberPage;

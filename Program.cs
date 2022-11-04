@@ -15,11 +15,13 @@ documentList.Add(book1);
 
 foreach (Book book in documentList)
 {
-    if (book1.IsbnCode == findBook || book1.Titolo)
+    if (book.IsbnCode == findBook || book.Title == findBook)
     {
-
+        Console.WriteLine("trovato il libro {0}", book.ToString());
     }
 }
+
+Console.WriteLine("l'utente vuole effettuare un prestito?");
 
 
 User user1 = new User("giuseppe", "acito", "email@mgm.it", "543336546554");
