@@ -19,4 +19,9 @@ public class Book : Document
         IsbnCode = isbnCode;
         NumberPage = numberPage;
     }
+
+    public override string ToString()
+    {
+        return Title + " " + IsbnCode;
+    }
 }
