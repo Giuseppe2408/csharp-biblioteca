@@ -18,6 +18,8 @@ public class Document
 
     public string SurnameAuthor { get; set; }   
 
+    public bool IsLoan { get; set; }
+
 
     public Document ()
     {
@@ -36,5 +38,15 @@ public class Document
     public override string ToString()
     {
         return Title;
+    }
+
+    public bool Loan(int num)
+    {
+        if (num == 0) { 
+            return false;
+        }
+
+        return true;
+        
     }
 }
