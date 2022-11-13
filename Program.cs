@@ -4,6 +4,7 @@
 
 using System.Reflection.Metadata.Ecma335;
 using System.Security.Cryptography.X509Certificates;
+using System.Text.Json;
 
 Console.WriteLine("Buongiorno bibliotecario");
 Console.WriteLine("vuoi cercare un libro? inserisci il codice o il titolo");
@@ -35,9 +36,9 @@ List<User> userList = new List<User>();
 userList.Add(user1);
 
 Console.WriteLine("l'utente vuole effettuare un prestito?");
-string prestito = Console.ReadLine();
+string doPrestito = Console.ReadLine();
 
-if (prestito == "si")
+if (doPrestito == "si")
 {
     Console.WriteLine("chi utente vuole effettuarlo?");
     string userPrestito = Console.ReadLine();
@@ -46,18 +47,31 @@ if (prestito == "si")
         if (user.Name == userPrestito)
         {
             Console.WriteLine("utente registrato può fare il prestito");
+            Console.WriteLine();
+            Console.WriteLine("inserisci il documento di cui vuoi fare il prestito");
+            string libroPrestito = Console.ReadLine();
+            
+            foreach (Document documento in documentList)
+            {
+                if (documento.Title != libroPrestito)
+                {
+                    Console.WriteLine("il libro non esiste");
+                }
+                else
+                {
+                    Prestito prestito = new Prestito("20/10/2022", "23/11/2023");
+                    user.AggiungiPrestito(prestito);
+                }
+        }
         }
         else
         {
-            Console.WriteLine("utente non registarto");
+            Console.WriteLine("utente non registrato");
         }
     }
 
 }
 
-//Deve essere possibile effettuare la ricerca dei prestiti dato nome e cognome di un cliente.
-
-//possibile gestione di prestiti con una classe
 Console.WriteLine();
 Console.WriteLine("Vuoi controllare i tuoi attuali libri in prestito?");
 string controlloPrestito = Console.ReadLine();
@@ -65,8 +79,22 @@ string controlloPrestito = Console.ReadLine();
 if (controlloPrestito == "si") 
 {
     Console.WriteLine("di quale utente vuoi vedere i prestiti?");
-}
+    string nomeUtente = Console.ReadLine();
+    foreach (User user in userList)
+    {
+        if (nomeUtente == user.Name)
+        {
+            
+            foreach (Prestito prestito in user.DocumentiInPrestito)
+            {
+                Console.Write("l' utente " + user.Name + " ");
+                Console.WriteLine("ha effettuato questi prestiti " + prestito);
+            }
+        }
+    }
+    
 
+}
 
 
 
